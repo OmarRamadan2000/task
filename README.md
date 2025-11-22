@@ -1,0 +1,88 @@
+# Task App
+
+> A modern Flutter application featuring social media authentication, settings management, and WebView functionality, built with Clean Architecture and Cubit state management.
+
+[![Flutter](https://img.shields.io/badge/Flutter-3.9.2+-02569B?logo=flutter)](https://flutter.dev)
+[![Firebase](https://img.shields.io/badge/Firebase-Latest-FFCA28?logo=firebase)](https://firebase.google.com)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+## 📱 Features
+
+### 🔐 Authentication
+- **Google Sign-In** - Seamless OAuth authentication
+- **Facebook Login** - Social media integration
+- **Firebase Auth** - Secure user management
+- Beautiful gradient UI with Material Design 3
+
+### ⚙️ Settings Management
+- **Web URL Configuration** - Customize WebView destination
+- **Device Scanning** - Discover WiFi and Bluetooth devices
+- **Persistent Storage** - Save user preferences locally
+- Real-time device connection status
+
+### 🌐 WebView Browser
+- **Full-Featured Browser** - Navigate any website
+- **Navigation Controls** - Back, forward, refresh, and home buttons
+- **Progress Indicator** - Visual loading feedback
+- **URL Bar** - Display current page address
+- **Auto URL Updating** - Changes reflect immediately from settings
+
+## 📸 Screenshots
+
+<div align="center">
+
+### Home Screen - WebView
+<img src="screenshots/home_webview.png" width="300" alt="Home Screen showing Google in WebView" />
+
+*The home screen displays the configured website with full navigation controls. The URL bar shows the current page, and users can navigate using back/forward buttons or open settings.*
+
+</div>
+
+## 🏗️ Architecture
+
+This project follows **Clean Architecture** principles with **Cubit** state management:
+
+```
+lib/
+├── core/                          # Shared utilities
+│   ├── error/
+│   │   ├── exceptions.dart       # Custom exceptions
+│   │   └── failures.dart         # Error handling
+│   ├── network/
+│   │   └── network_info.dart     # Connectivity checking
+│   └── usecases/
+│       └── usecase.dart          # Base use case class
+│
+├── features/                      # Feature modules
+│   ├── auth/                     # Authentication feature
+│   │   ├── data/
+│   │   │   ├── datasources/      # Remote & local data sources
+│   │   │   ├── models/           # Data models
+│   │   │   └── repositories/     # Repository implementations
+│   │   ├── domain/
+│   │   │   ├── entities/         # Business entities
+│   │   │   ├── repositories/     # Repository interfaces
+│   │   │   └── usecases/         # Business logic
+│   │   └── presentation/
+│   │       ├── cubit/            # State management
+│   │       ├── pages/            # UI screens
+│   │       └── widgets/          # Reusable components
+│   │
+│   ├── settings/                 # Settings feature
+│   │   └── [similar structure]
+│   │
+│   └── webview/                  # WebView feature
+│       └── presentation/
+│
+├── injection_container.dart      # Dependency injection (GetIt)
+├── firebase_options.dart         # Firebase configuration
+└── main.dart                     # App entry point
+```
+
+### 🎯 Design Patterns
+
+- **Clean Architecture** - Separation of concerns across layers
+- **Repository Pattern** - Abstract data sources
+- **Dependency Injection** - Using GetIt service locator
+- **BLoC/Cubit Pattern** - Predictable state management
+- **Either Pattern** - Functional error handling with Dartz
