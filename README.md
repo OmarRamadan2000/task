@@ -29,14 +29,21 @@
 
 ## 📸 Screenshots
 
-<div align="center">
-
-### Home Screen - WebView
-<img src="screenshots/home_webview.png" width="300" alt="Home Screen showing Google in WebView" />
-
-*The home screen displays the configured website with full navigation controls. The URL bar shows the current page, and users can navigate using back/forward buttons or open settings.*
-
-</div>
+<picture>
+  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://github.com/user-attachments/assets/0765c444-e0d9-4375-b899-abc11dd799c7" width="280">
+</picture>
+<picture>
+  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://github.com/user-attachments/assets/14247db6-0735-4096-b2ea-d274267ce7d5" width="280">
+</picture>
+<picture>
+  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://github.com/user-attachments/assets/98759ee4-aab9-48f8-a500-2fab6193cce5" width="280">
+</picture>
+<picture>
+  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://github.com/user-attachments/assets/fd9e1728-d284-448b-9c4d-7834f3f5ebe8" width="280">
+</picture>
+<picture>
+  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://github.com/user-attachments/assets/f870a8ca-0eb3-4aac-a239-f461fc573517" width="280">
+</picture>
 
 ## 🏗️ Architecture
 
