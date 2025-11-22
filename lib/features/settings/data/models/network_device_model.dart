@@ -18,11 +18,6 @@ class NetworkDeviceModel extends NetworkDevice {
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'type': type,
-      'isConnected': isConnected,
-    };
+    return {'id': id, 'name': name, 'type': type, 'isConnected': isConnected};
   }
 }

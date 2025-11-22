@@ -27,22 +27,25 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     try {
       // Sign out first to ensure account picker shows
       await googleSignIn.signOut();
-      
+
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-      
+
       if (googleUser == null) {
         throw AuthException('Google sign in cancelled');
       }
 
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
 
       final credential = firebase_auth.GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
 
-      final userCredential = await firebaseAuth.signInWithCredential(credential);
-      
+      final userCredential = await firebaseAuth.signInWithCredential(
+        credential,
+      );
+
       if (userCredential.user == null) {
         throw AuthException('Failed to sign in with Google');
       }
@@ -76,8 +79,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         accessToken.tokenString,
       );
 
-      final userCredential = await firebaseAuth.signInWithCredential(credential);
-      
+      final userCredential = await firebaseAuth.signInWithCredential(
+        credential,
+      );
+
       if (userCredential.user == null) {
         throw AuthException('Failed to sign in with Facebook');
       }

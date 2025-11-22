@@ -22,10 +22,7 @@ class SettingsCubit extends Cubit<SettingsState> {
     final result = await getSettings(NoParams());
     result.fold(
       (failure) => emit(SettingsError(failure.message)),
-      (settings) => emit(SettingsLoaded(
-        settings: settings,
-        devices: const [],
-      )),
+      (settings) => emit(SettingsLoaded(settings: settings, devices: const [])),
     );
   }
 
@@ -33,7 +30,7 @@ class SettingsCubit extends Cubit<SettingsState> {
     final currentState = state;
     if (currentState is SettingsLoaded) {
       emit(currentState.copyWith(isScanning: true));
-      
+
       final result = await getAvailableDevices(NoParams());
       result.fold(
         (failure) {
@@ -41,10 +38,7 @@ class SettingsCubit extends Cubit<SettingsState> {
           emit(SettingsError(failure.message));
         },
         (devices) {
-          emit(currentState.copyWith(
-            devices: devices,
-            isScanning: false,
-          ));
+          emit(currentState.copyWith(devices: devices, isScanning: false));
         },
       );
     }
@@ -57,14 +51,11 @@ class SettingsCubit extends Cubit<SettingsState> {
       final result = await saveSettings(
         SaveSettingsParams(settings: updatedSettings),
       );
-      
-      result.fold(
-        (failure) => emit(SettingsError(failure.message)),
-        (_) {
-          emit(currentState.copyWith(settings: updatedSettings));
-          emit(SettingsSaved(updatedSettings));
-        },
-      );
+
+      result.fold((failure) => emit(SettingsError(failure.message)), (_) {
+        emit(currentState.copyWith(settings: updatedSettings));
+        emit(SettingsSaved(updatedSettings));
+      });
     }
   }
 
@@ -77,7 +68,7 @@ class SettingsCubit extends Cubit<SettingsState> {
       final result = await saveSettings(
         SaveSettingsParams(settings: updatedSettings),
       );
-      
+
       result.fold(
         (failure) => emit(SettingsError(failure.message)),
         (_) => emit(currentState.copyWith(settings: updatedSettings)),

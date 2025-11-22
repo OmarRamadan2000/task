@@ -22,16 +22,13 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> checkAuthStatus() async {
     emit(AuthLoading());
     final result = await getCurrentUser(NoParams());
-    result.fold(
-      (failure) => emit(AuthUnauthenticated()),
-      (user) {
-        if (user != null) {
-          emit(AuthAuthenticated(user));
-        } else {
-          emit(AuthUnauthenticated());
-        }
-      },
-    );
+    result.fold((failure) => emit(AuthUnauthenticated()), (user) {
+      if (user != null) {
+        emit(AuthAuthenticated(user));
+      } else {
+        emit(AuthUnauthenticated());
+      }
+    });
   }
 
   Future<void> signInWithGooglePressed() async {

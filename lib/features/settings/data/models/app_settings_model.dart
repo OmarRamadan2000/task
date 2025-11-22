@@ -1,10 +1,7 @@
 import '../../domain/entities/app_settings.dart';
 
 class AppSettingsModel extends AppSettings {
-  const AppSettingsModel({
-    required super.webUrl,
-    super.selectedDeviceId,
-  });
+  const AppSettingsModel({required super.webUrl, super.selectedDeviceId});
 
   factory AppSettingsModel.fromJson(Map<String, dynamic> json) {
     return AppSettingsModel(
@@ -14,9 +11,6 @@ class AppSettingsModel extends AppSettings {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'webUrl': webUrl,
-      'selectedDeviceId': selectedDeviceId,
-    };
+    return {'webUrl': webUrl, 'selectedDeviceId': selectedDeviceId};
   }
 }

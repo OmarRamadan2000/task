@@ -30,10 +30,7 @@ class LoginPage extends StatelessWidget {
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [
-                  Colors.blue.shade400,
-                  Colors.purple.shade400,
-                ],
+                colors: [Colors.blue.shade400, Colors.purple.shade400],
               ),
             ),
             child: SafeArea(
@@ -78,10 +75,7 @@ class LoginPage extends StatelessWidget {
                       const SizedBox(height: 8),
                       const Text(
                         'Sign in to continue',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.white70,
-                        ),
+                        style: TextStyle(fontSize: 16, color: Colors.white70),
                       ),
                       const SizedBox(height: 60),
 
@@ -156,10 +150,7 @@ class _SocialLoginButton extends StatelessWidget {
             const SizedBox(width: 12),
             Text(
               label,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-              ),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
             ),
           ],
         ),

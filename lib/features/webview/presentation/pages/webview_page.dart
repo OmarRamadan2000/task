@@ -4,10 +4,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 class WebViewPage extends StatefulWidget {
   final String url;
 
-  const WebViewPage({
-    super.key,
-    required this.url,
-  });
+  const WebViewPage({super.key, required this.url});
 
   @override
   State<WebViewPage> createState() => _WebViewPageState();
@@ -121,19 +118,12 @@ class _WebViewPageState extends State<WebViewPage> {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Row(
               children: [
-                Icon(
-                  Icons.lock_outline,
-                  size: 16,
-                  color: Colors.grey.shade600,
-                ),
+                Icon(Icons.lock_outline, size: 16, color: Colors.grey.shade600),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
                     _currentUrl,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey.shade700,
-                    ),
+                    style: TextStyle(fontSize: 12, color: Colors.grey.shade700),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -142,11 +132,7 @@ class _WebViewPageState extends State<WebViewPage> {
             ),
           ),
           // WebView
-          Expanded(
-            child: WebViewWidget(
-              controller: _controller,
-            ),
-          ),
+          Expanded(child: WebViewWidget(controller: _controller)),
         ],
       ),
       bottomNavigationBar: BottomAppBar(

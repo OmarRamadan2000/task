@@ -22,9 +22,7 @@ class SettingsLocalDataSourceImpl implements SettingsLocalDataSource {
         return AppSettingsModel.fromJson(json.decode(jsonString));
       }
       // Return default settings
-      return const AppSettingsModel(
-        webUrl: 'https://www.google.com',
-      );
+      return const AppSettingsModel(webUrl: 'https://www.google.com');
     } catch (e) {
       throw CacheException('Failed to get settings');
     }

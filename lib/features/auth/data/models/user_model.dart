@@ -9,10 +9,7 @@ class UserModel extends User {
     required super.provider,
   });
 
-  factory UserModel.fromFirebaseUser(
-    dynamic firebaseUser,
-    String provider,
-  ) {
+  factory UserModel.fromFirebaseUser(dynamic firebaseUser, String provider) {
     return UserModel(
       id: firebaseUser.uid,
       email: firebaseUser.email ?? '',

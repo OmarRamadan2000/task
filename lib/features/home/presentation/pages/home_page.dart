@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     return BlocBuilder<SettingsCubit, SettingsState>(
       builder: (context, state) {
         String webUrl = 'https://www.google.com';
-        
+
         if (state is SettingsLoaded) {
           webUrl = state.settings.webUrl;
         } else if (state is SettingsSaved) {
@@ -42,7 +42,9 @@ class _HomePageState extends State<HomePage> {
                   // Open settings and wait for it to close, then reload settings
                   await Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const SettingsPage()),
+                    MaterialPageRoute(
+                      builder: (context) => const SettingsPage(),
+                    ),
                   );
                   // Ensure the latest settings are loaded so the WebView can update
                   if (mounted) {
