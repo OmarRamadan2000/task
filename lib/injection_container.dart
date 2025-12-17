@@ -8,6 +8,7 @@ import 'package:network_info_plus/network_info_plus.dart' as network_info_plus;
 
 // Core
 import 'core/network/network_info.dart';
+import 'core/services/app_update_service.dart';
 
 // Auth
 import 'features/auth/data/datasources/auth_remote_data_source.dart';
@@ -94,6 +95,7 @@ Future<void> init() async {
 
   //! Core
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
+  sl.registerLazySingleton(() => AppUpdateService());
 
   //! External
   final sharedPreferences = await SharedPreferences.getInstance();
