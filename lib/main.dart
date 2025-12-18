@@ -32,22 +32,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  void initState() {
-    super.initState();
-    // Schedule update check after build completes
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _checkForUpdates();
-    });
-  }
-
-  Future<void> _checkForUpdates() async {
-    final updateService = di.sl<AppUpdateService>();
-    if (mounted) {
-      updateService.checkForUpdate(context);
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
@@ -80,12 +64,45 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
         ),
-        home: const AuthWrapper(),
+        home: const UpdateCheckWrapper(child: AuthWrapper()),
         routes: {
           '/login': (context) => const LoginPage(),
           '/settings': (context) => const SettingsPage(),
         },
       ),
     );
+  }
+}
+
+/// Wrapper widget to check for updates after MaterialApp is initialized
+class UpdateCheckWrapper extends StatefulWidget {
+  final Widget child;
+
+  const UpdateCheckWrapper({super.key, required this.child});
+
+  @override
+  State<UpdateCheckWrapper> createState() => _UpdateCheckWrapperState();
+}
+
+class _UpdateCheckWrapperState extends State<UpdateCheckWrapper> {
+  @override
+  void initState() {
+    super.initState();
+    // Check for updates after the first frame
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkForUpdates();
+    });
+  }
+
+  Future<void> _checkForUpdates() async {
+    final updateService = di.sl<AppUpdateService>();
+    if (mounted) {
+      updateService.checkForUpdate(context);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return widget.child;
   }
 }
